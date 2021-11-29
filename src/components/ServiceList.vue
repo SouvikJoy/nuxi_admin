@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-6">
+  <div class="md:mx-6">
     <div class="title">Service List</div>
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -29,20 +29,6 @@
                   >
                     Name
                   </th>
-                  <th
-                    scope="col"
-                    class="
-                      px-6
-                      py-3
-                      text-left text-xs
-                      font-medium
-                      text-gray-500
-                      uppercase
-                      tracking-wider
-                    "
-                  >
-                    Description
-                  </th>
                   <th scope="col" class="relative px-6 py-3">
                     <span class="sr-only">Edit</span>
                   </th>
@@ -58,9 +44,6 @@
                         </div>
                       </div>
                     </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {{ service.description }}
                   </td>
                   <td
                     class="
