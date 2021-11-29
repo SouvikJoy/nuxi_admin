@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { supabase } from '../supabase';
+import { supabase } from '@/supabase';
 
 function loadPage(view) {
   return () =>
@@ -10,7 +10,7 @@ function loadPage(view) {
 
 const routes = [
   {
-    path: '/dashboard',
+    path: '/',
     name: 'Dashboard',
     component: loadPage("Dashboard"),
     meta: {
@@ -18,7 +18,7 @@ const routes = [
     }
   },
   {
-    path: '/',
+    path: '/products',
     name: 'Products',
     component: loadPage("Products"),
     meta: {
