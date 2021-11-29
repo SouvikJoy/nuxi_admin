@@ -7,7 +7,7 @@
       <div class="flex justify-between">
         <div class="lg:hidden">
           <router-link
-            :to="{ name: 'Products' }"
+            :to="{ name: 'Dashboard' }"
             class="
               flex
               justify-center
