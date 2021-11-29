@@ -97,7 +97,7 @@
                    />
                    <ErrorMessage
                        id="emailHelp"
-                       class="text-xs text-red-600 font-bold"
+                       class="text-xs text-red-600 font-bold tracking-wider"
                    />
                  </div>
 
@@ -130,7 +130,7 @@
                    />
                    <ErrorMessage
                        id="passwordHelp"
-                       class="text-xs text-red-600 font-bold"
+                       class="text-xs text-red-600 font-bold tracking-wider"
                        name="password"
                    />
                  </div>

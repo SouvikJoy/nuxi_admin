@@ -11,7 +11,7 @@
         rules="required"
       />
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="name" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="name" />
 
       <Field
         name="description"
@@ -23,7 +23,7 @@
         rules="required|max:180"
       />
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="description" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="description" />
 
       <Field
         name="brief"
@@ -34,7 +34,7 @@
         rules="required|max:180"
       />
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="brief" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="brief" />
 
       <Field
         name="price"
@@ -46,7 +46,7 @@
         rules="required"
       />
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="price" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="price" />
 
       <select
         name="category"
@@ -64,7 +64,7 @@
         </option>
       </select>
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="category" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="category" />
 
       <div class="my-8">
         <label class="block text-sm font-medium text-gray-700">

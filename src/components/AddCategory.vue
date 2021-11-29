@@ -11,7 +11,7 @@
         rules="required"
       />
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="name" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="name" />
 
       <Field
         as="textarea"
@@ -25,7 +25,7 @@
         rules="required|max:180"
       />
 
-      <ErrorMessage class="text-xs text-red-600 font-bold" name="description" />
+      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="description" />
 
       <div class="my-8">
         <label class="block text-sm font-medium text-gray-700">
@@ -87,7 +87,7 @@
               </label>
 
               <ErrorMessage
-                class="text-xs text-red-600 font-bold"
+                class="text-xs text-red-600 font-bold tracking-wider"
                 name="file-upload"
               />
 

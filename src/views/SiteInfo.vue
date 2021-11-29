@@ -75,7 +75,7 @@
                             rules="required"
                         />
 
-                        <ErrorMessage class="text-xs text-red-600 font-bold" name="name" />
+                        <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="name" />
                       </div>
 
                       <div>
@@ -91,7 +91,7 @@
                         />
                       </div>
 
-                      <ErrorMessage class="text-xs text-red-600 font-bold" name="email" />
+                      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="email" />
                     </div>
 
                     <div class="grid md:grid-cols-2 py-4 gap-4">
@@ -108,7 +108,7 @@
                         />
 
                         <ErrorMessage
-                            class="text-xs text-red-600 font-bold"
+                            class="text-xs text-red-600 font-bold tracking-wider"
                             name="telephone"
                         />
                       </div>
@@ -126,7 +126,7 @@
                         />
 
                         <ErrorMessage
-                            class="text-xs text-red-600 font-bold"
+                            class="text-xs text-red-600 font-bold tracking-wider"
                             name="cellphone"
                         />
                       </div>
@@ -144,7 +144,7 @@
                           rules="required"
                       />
 
-                      <ErrorMessage class="text-xs text-red-600 font-bold" name="address" />
+                      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="address" />
                     </div>
 
                     <div class="py-4">
@@ -159,7 +159,7 @@
                           rules="required|max:80"
                       />
 
-                      <ErrorMessage class="text-xs text-red-600 font-bold" name="brief" />
+                      <ErrorMessage class="text-xs text-red-600 font-bold tracking-wider" name="brief" />
                     </div>
 
                     <div>
@@ -175,7 +175,7 @@
                       />
 
                       <ErrorMessage
-                          class="text-xs text-red-600 font-bold"
+                          class="text-xs text-red-600 font-bold tracking-wider"
                           name="description"
                       />
                     </div>
