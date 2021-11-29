@@ -5,7 +5,7 @@
          <div class="w-full md:w-7/12 lg:w-5/12 xl:w-1/3 px-4">
            <div class="flex content-center items-center justify-center py-10">
              <img src="@/assets/logo.png" alt="" :style="{ width: '25px' }" />
-             <div class="text-center ml-2 font-bold text-4xl p-2 brand-text">
+             <div class="text-center ml-2 font-bold text-3xl brand-text">
                Morgan Design
              </div>
            </div>
