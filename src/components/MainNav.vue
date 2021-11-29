@@ -140,6 +140,39 @@
         </svg>
       </div>
     </router-link>
+    <router-link :to="{ name: 'Subscribers' }" class="group">
+      <div
+          class="
+          flex
+          justify-center
+          items-center
+          w-10
+          h-10
+          lg:w-14 lg:h-14
+          text-white
+          opacity-50
+          rounded-xl
+          group-hover:bg-white group-hover:opacity-100 group-hover:text-blue-800
+          transform
+          group-hover:translate-x-8
+          duration-300
+          group-hover:shadow-xl
+        "
+      >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="h-6 w-6"
+        >
+          <path
+              fill-rule="evenodd"
+              d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+              clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </router-link>
   </div>
 </template>
 
