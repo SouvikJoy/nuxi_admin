@@ -59,6 +59,8 @@
                   <div class="flex justify-center my-6">
                     <Logo v-model:path="app_logo_url" @upload="updateSiteInfo" />
                   </div>
+
+
                   <div>
                     <div class="grid md:grid-cols-2 gap-4">
                       <div>
@@ -177,6 +179,11 @@
                           name="description"
                       />
                     </div>
+
+                    <label for="background-image">Landing Page Image</label>
+                    <div class="flex justify-center my-6">
+                      <BackgroundImage v-model:path="app_landing_image_url" @upload="updateSiteInfo" />
+                    </div>
                   </div>
 
                   <div>
@@ -205,10 +212,12 @@ import { Field, Form, ErrorMessage } from "vee-validate";
 import { initRule } from "@/utils";
 import MainNav from "@/components/MainNav";
 import Tools from "@/components/Tools";
+import BackgroundImage from "@/components/BackgroundImage";
 
 export default {
   name: "SiteInfo",
   components: {
+    BackgroundImage,
     Tools,
     MainNav,
     Logo,
@@ -228,6 +237,7 @@ export default {
     const app_cellphone = ref("");
     const app_email = ref("");
     const app_logo_url = ref("");
+    const app_landing_image_url = ref("");
     const app_brief = ref("");
 
     async function getProfile() {
@@ -237,7 +247,7 @@ export default {
         let { data, error, status } = await supabase
           .from("site_infos")
           .select(
-            `app_name, app_logo_url, app_description, app_address, app_telephone, app_cellphone, app_email, app_brief`
+            `app_name, app_logo_url, app_description, app_address, app_telephone, app_cellphone, app_email, app_brief, app_landing_image_url`
           )
           .single();
 
@@ -246,6 +256,7 @@ export default {
         if (data) {
           app_name.value = data.app_name;
           app_logo_url.value = data.app_logo_url;
+          app_landing_image_url.value = data.app_landing_image_url;
           app_description.value = data.app_description;
           app_address.value = data.app_address;
           app_telephone.value = data.app_telephone;
@@ -270,6 +281,7 @@ export default {
           id: "1d62bf60-05a8-4b0c-96df-64771a91f87f",
           app_name: app_name.value,
           app_logo_url: app_logo_url.value,
+          app_landing_image_url: app_landing_image_url.value,
           app_description: app_description.value,
           app_address: app_address.value,
           app_telephone: app_telephone.value,
@@ -299,6 +311,7 @@ export default {
       loading,
       app_name,
       app_logo_url,
+      app_landing_image_url,
       app_description,
       app_address,
       app_telephone,
