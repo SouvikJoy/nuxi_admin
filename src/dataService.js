@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const productList = ref();
 const categoryList = ref();
 const serviceList = ref();
+const subscribersList = ref();
 const displayError = ref();
 const session = ref();
 
@@ -16,6 +17,7 @@ const dataService = () => {
       await loadProducts();
       await loadCategories();
       await loadServices();
+      await loadSubscribers();
     }
 
     SUPABASE_CLIENT.auth.onAuthStateChange(async (_event, _session) => {
@@ -25,6 +27,7 @@ const dataService = () => {
         await loadProducts();
         await loadCategories();
         await loadServices();
+        await loadSubscribers();
       }
     });
   };
@@ -143,6 +146,19 @@ const dataService = () => {
     }
   };
 
+  const removeSubscribersEmail = async (subscriber) => {
+    try {
+      const { error } = await SUPABASE_CLIENT.from("subscribers")
+          .delete()
+          .eq("id", subscriber.id);
+      if (error) throw error;
+
+    } catch (e) {
+      console.log(e);
+      throw Error(e);
+    }
+  };
+
   const loadProducts = async () => {
     const load = async () => {
       let { data, error } = await SUPABASE_CLIENT.from("products").select(`
@@ -216,6 +232,23 @@ const dataService = () => {
     await load();
   };
 
+  const loadSubscribers = async () => {
+    const load = async () => {
+      let { data, error } = await SUPABASE_CLIENT.from("subscribers").select(`*`);
+      subscribersList.value = data;
+      return { data, error };
+    };
+
+    SUPABASE_CLIENT.from("subscribers")
+        .on("*", async (payload) => {
+          console.log("Change received!", payload);
+          await load();
+        })
+        .subscribe();
+
+    await load();
+  };
+
 
   const loadProductById = async (productId) => {
     let { data, error } = await SUPABASE_CLIENT.from("products")
@@ -249,6 +282,7 @@ const dataService = () => {
     productList,
     categoryList,
     serviceList,
+    subscribersList,
 
     saveProducts,
     loadProducts,
@@ -262,7 +296,9 @@ const dataService = () => {
     saveServices,
     removeService,
     loadServices,
-    loadServiceById
+    loadServiceById,
+    loadSubscribers,
+    removeSubscribersEmail
   };
 };
 

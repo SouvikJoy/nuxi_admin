@@ -42,6 +42,14 @@ const routes = [
     }
   },
   {
+    path: '/subscribers',
+    name: 'Subscribers',
+    component: loadPage("Subscribers"),
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
     path: '/site-infos',
     name: 'SiteInfo',
     component: loadPage("SiteInfo"),
