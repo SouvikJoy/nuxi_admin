@@ -6,6 +6,10 @@ import { supabase } from "@/supabase";
 export default createStore({
   state: {
     user: null,
+    colors: {
+        color: '#ffffff',
+        colos: '#ffffff',
+    },
   },
   mutations: {
     setUser(state, payload) {

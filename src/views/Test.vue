@@ -6,11 +6,8 @@
           class="relative top-20 right-20"
           theme="light"
           :color="color"
-          :sucker-hide="false"
-          :sucker-canvas="suckerCanvas"
-          :sucker-area="suckerArea"
+          :sucker-hide="true"
           @changeColor="changeColor"
-          @openSucker="openSucker"
       />
     </div>
     </div>
@@ -32,25 +29,12 @@ export default {
       suckerCanvas: null,
       suckerArea: [],
       isSucking: false,
-      isHidden: true
     }
   },
   methods: {
-    show () {
-      this.isHidden = !this.isHidden
-    },
     changeColor(color) {
       const { r, g, b, a } = color.rgba
       this.color = `rgba(${r}, ${g}, ${b}, ${a})`
-    },
-    openSucker(isOpen) {
-      if (isOpen) {
-        // ... canvas be created
-        // this.suckerCanvas = canvas
-        // this.suckerArea = [x1, y1, x2, y2]
-      } else {
-        // this.suckerCanvas && this.suckerCanvas.remove
-      }
     },
   },
 }
