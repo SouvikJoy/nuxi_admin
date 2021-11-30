@@ -196,6 +196,11 @@
                   </div>
                 </Form>
               </div>
+              <p>
+                Work in Progress
+              </p>
+
+              <Test />
             </div>
           </div>
         </div>
@@ -213,10 +218,12 @@ import { initRule } from "@/utils";
 import MainNav from "@/components/MainNav";
 import Tools from "@/components/Tools";
 import BackgroundImage from "@/components/BackgroundImage";
+import Test from "@/views/Test";
 
 export default {
   name: "SiteInfo",
   components: {
+    Test,
     BackgroundImage,
     Tools,
     MainNav,

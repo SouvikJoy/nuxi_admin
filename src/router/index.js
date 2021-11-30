@@ -50,6 +50,14 @@ const routes = [
     }
   },
   {
+    path: '/test',
+    name: 'Test',
+    component: loadPage("Test"),
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
     path: '/site-infos',
     name: 'SiteInfo',
     component: loadPage("SiteInfo"),
