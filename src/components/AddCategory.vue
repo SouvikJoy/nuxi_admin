@@ -109,6 +109,7 @@ import { useRouter } from "vue-router";
 import dataService from "@/dataService";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { initRule } from "@/utils";
+import {createToast} from "mosha-vue-toastify";
 
 export default {
   name: "AddCategory",
@@ -135,10 +136,24 @@ export default {
           ...formData.value,
           file: selectedFile.value,
         });
+
+
+        createToast('Category Created',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'success',
+            })
+
+        await router.go();
       } catch (e) {
-        alert(e.message);
+        createToast('Something Wrong',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'danger',
+            })
       }
-      await router.go();
     };
 
     const handleFileChange = (event) => {

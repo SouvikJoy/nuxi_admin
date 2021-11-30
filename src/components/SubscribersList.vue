@@ -74,6 +74,7 @@
 <script>
 import { useRouter } from "vue-router";
 import dataService from "@/dataService";
+import {createToast} from "mosha-vue-toastify";
 export default {
   name: "SubscribersList",
   setup() {
@@ -83,7 +84,13 @@ export default {
 
     const deleteSubscriberEmail = async (subscriber) => {
       await removeSubscribersEmail(subscriber);
-      router.go();
+      createToast('Subscriber Deleted',
+          {
+            showIcon: 'true',
+            transition: 'bounce',
+            type: 'danger',
+          })
+      await router.go();
     };
 
 

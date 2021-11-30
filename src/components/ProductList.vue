@@ -86,6 +86,7 @@
 import { useRouter } from "vue-router";
 import dataService from "@/dataService";
 import ImageView from "@/components/ImageView";
+import {createToast} from "mosha-vue-toastify";
 export default {
   name: "ProductList",
   components: { ImageView },
@@ -99,7 +100,14 @@ export default {
 
     const deleteProduct = async (product) => {
       await removeProduct(product);
-      router.go();
+
+      createToast('Product Deleted',
+          {
+            showIcon: 'true',
+            transition: 'bounce',
+            type: 'danger',
+          })
+      await router.go();
     };
 
     return {

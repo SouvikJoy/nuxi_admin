@@ -135,8 +135,6 @@
 
 
 <script>
-import { useStore } from "vuex";
-import { computed } from "vue";
 import MainNav from "@/components/MainNav.vue";
 import Tools from "@/components/Tools.vue";
 import ProductList from "@/components/ProductList";
@@ -155,18 +153,5 @@ export default {
   data:() => ({
     showSidebar: false,
   }),
-  setup() {
-    const store = useStore();
-
-    const userEmail = computed(() => store.state.user);
-
-     const signOut = () => {
-      store.dispatch("signOutAction");
-    };
-    return {
-      signOut,
-      userEmail,
-    };
-  },
 };
 </script>

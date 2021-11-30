@@ -138,10 +138,14 @@
 
 <script>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 import dataService from "@/dataService";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { initRule } from "@/utils";
+
+import { createToast } from 'mosha-vue-toastify';
+// import the styling for the toast
+import 'mosha-vue-toastify/dist/style.css'
+import router from "@/router";
 
 export default {
   name: "AddProduct",
@@ -153,7 +157,6 @@ export default {
   setup() {
     initRule(["min", "max", "required"]);
 
-    const router = useRouter();
     const { saveProducts, categoryList } = dataService();
     const selectedFile = ref(null);
 
@@ -169,13 +172,26 @@ export default {
       try {
         await saveProducts({
           ...formData.value,
-          price: Number(formData.value.price * 100),
+          price: Number(formData.value.price),
           file: selectedFile.value,
         });
+
+        createToast('Product Created',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'success',
+            })
+
+        await router.go()
       } catch (e) {
-        alert(e.message);
+        createToast('Something Wrong',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'danger',
+            })
       }
-      await router.go();
     };
 
     const handleFileChange = (event) => {

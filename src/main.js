@@ -2,6 +2,9 @@ import { createApp as createVueApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import moshaToast from 'mosha-vue-toastify'
+import 'mosha-vue-toastify/dist/style.css'
+
 
 import plugins from "./plugins";
 
@@ -14,6 +17,7 @@ const createApp = (ssr = false) => {
     app.use(router);
     app.use(store);
     app.use(plugins);
+    app.use(moshaToast);
 
     return {
         app,

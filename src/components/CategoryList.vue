@@ -84,6 +84,7 @@
 import { useRouter } from "vue-router";
 import dataService from "@/dataService";
 import ImageView from "@/components/ImageView";
+import {createToast} from "mosha-vue-toastify";
 export default {
   name: "CategoryList",
   components: { ImageView },
@@ -98,7 +99,13 @@ export default {
 
     const deleteCategory = async (category) => {
       await removeCategory(category);
-      router.go();
+      createToast('Category Deleted',
+          {
+            showIcon: 'true',
+            transition: 'bounce',
+            type: 'danger',
+          })
+      await router.go();
     };
 
     const doLogout = async () => {

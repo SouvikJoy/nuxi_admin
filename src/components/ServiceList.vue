@@ -80,6 +80,7 @@
 <script>
 import { useRouter } from "vue-router";
 import dataService from "@/dataService";
+import {createToast} from "mosha-vue-toastify";
 export default {
   name: "ServiceList",
   setup() {
@@ -93,7 +94,13 @@ export default {
 
     const deleteService = async (service) => {
       await removeService(service);
-      router.go();
+      createToast('Service Deleted',
+          {
+            showIcon: 'true',
+            transition: 'bounce',
+            type: 'danger',
+          })
+      await router.go();
     };
 
 

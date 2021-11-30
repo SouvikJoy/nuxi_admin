@@ -3,6 +3,11 @@ import createPersistedState from "vuex-persistedstate";
 import router from '../router';
 import { supabase } from "@/supabase";
 
+import { createToast } from 'mosha-vue-toastify';
+// import the styling for the toast
+import 'mosha-vue-toastify/dist/style.css'
+
+
 export default createStore({
   state: {
     user: null,
@@ -24,11 +29,21 @@ export default createStore({
           password: form.password,
         });
         if (error) throw error;
-        alert("You've Signed In successfully");
         await router.push('/')
+        createToast('You have Signed In successfully',
+        {
+          showIcon: 'true',
+              transition: 'bounce',
+            type: 'success',
+        })
         commit('setUser', user.email)
       } catch (error) {
-        alert(error.error_description || error.message);
+        createToast('Invalid Credentials',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'danger',
+            })
       }
     },
 
@@ -49,27 +64,25 @@ export default createStore({
     async signOutAction({ commit }) {
       try {
         const { error } = await supabase.auth.signOut();
+
+        createToast('You have Signed Out successfully',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'danger',
+            })
         if (error) throw error;
         commit('setUser', null)
-        alert("You've been logged Out successfully");
         await router.push("/sign-in");
       } catch (error) {
-        alert(error.error_description || error.message);
+        createToast('Error',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'danger',
+            })
       }
     },
-
-    async createService (form) {
-      try {
-        const { error } = await supabase.from("services").insert({
-          name: form.name,
-          description: form.description
-        })
-        if (error) throw error
-        await router.push('/')
-      } catch (error) {
-        console.log(error)
-      }
-    }
   },
   modules: {
   },

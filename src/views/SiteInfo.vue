@@ -211,6 +211,7 @@ import Tools from "@/components/Tools";
 import BackgroundImage from "@/components/BackgroundImage";
 import Test from "@/views/Test";
 import Icon from "@/components/Icon";
+import {createToast} from "mosha-vue-toastify";
 
 export default {
   name: "SiteInfo",
@@ -265,7 +266,7 @@ export default {
           app_brief.value = data.app_brief;
         }
       } catch (error) {
-        alert(error.message);
+        alert(error.message)
       } finally {
         loading.value = false;
       }
@@ -295,9 +296,21 @@ export default {
           returning: "minimal", // Don't return the value after inserting
         });
 
+        createToast('Informations Changed',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'success',
+            })
+
         if (error) throw error;
       } catch (error) {
-        alert(error.message);
+        createToast('Informations Can not be Changed',
+            {
+              showIcon: 'true',
+              transition: 'bounce',
+              type: 'danger',
+            })
       } finally {
         loading.value = false;
       }
