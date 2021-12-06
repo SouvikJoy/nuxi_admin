@@ -34,7 +34,6 @@
 
 <script>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 import dataService from "@/dataService";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { initRule } from "@/utils";
@@ -49,8 +48,6 @@ export default {
   },
   setup() {
     initRule(["min", "max", "required"]);
-
-    const router = useRouter();
     const { saveServices } = dataService();
 
     const formData = ref({
@@ -70,7 +67,6 @@ export default {
               transition: 'bounce',
               type: 'success',
             })
-        await router.go();
       } catch (e) {
         createToast('Error',
             {
@@ -79,7 +75,6 @@ export default {
               type: 'danger',
             })
       }
-      await router.go();
     };
 
     return {

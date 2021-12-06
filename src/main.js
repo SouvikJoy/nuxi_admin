@@ -5,7 +5,7 @@ import store from "./store";
 import moshaToast from 'mosha-vue-toastify'
 import 'mosha-vue-toastify/dist/style.css'
 
-
+console.log(store);
 import plugins from "./plugins";
 
 import "./assets/css/tailwind.css";

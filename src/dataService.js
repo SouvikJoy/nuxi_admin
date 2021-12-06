@@ -161,12 +161,7 @@ const dataService = () => {
 
   const loadProducts = async () => {
     const load = async () => {
-      let { data, error } = await SUPABASE_CLIENT.from("products").select(`
-    *,
-    product_variants (
-      *
-    )
-  `);
+      let { data, error } = await SUPABASE_CLIENT.from("products").select(`*, product_variants (*)`);
       productList.value = data;
       displayError.value = error;
 
@@ -222,7 +217,8 @@ const dataService = () => {
       return { data, error };
     };
 
-    SUPABASE_CLIENT.from("services")
+    SUPABASE_CLIENT
+        .from("services")
         .on("*", async (payload) => {
           console.log("Change received!", payload);
           await load();

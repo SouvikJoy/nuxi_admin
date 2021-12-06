@@ -143,9 +143,6 @@ import { Field, Form, ErrorMessage } from "vee-validate";
 import { initRule } from "@/utils";
 
 import { createToast } from 'mosha-vue-toastify';
-// import the styling for the toast
-import 'mosha-vue-toastify/dist/style.css'
-import router from "@/router";
 
 export default {
   name: "AddProduct",
@@ -182,8 +179,6 @@ export default {
               transition: 'bounce',
               type: 'success',
             })
-
-        await router.go()
       } catch (e) {
         createToast('Something Wrong',
             {

@@ -4,47 +4,59 @@ import router from '../router';
 import { supabase } from "@/supabase";
 
 import { createToast } from 'mosha-vue-toastify';
-// import the styling for the toast
-import 'mosha-vue-toastify/dist/style.css'
 
 
 export default createStore({
   state: {
-    user: null,
+    user: [],
+    loggedIn: false,
     colors: {
         color: '#ffffff',
         colos: '#ffffff',
     },
   },
   mutations: {
-    setUser(state, payload) {
-      state.user = payload;
-    },
+      SET_USER(state, payload) {
+          state.user = payload;
+          state.loggedIn = true;
+      },
+      RESET_USER(state) {
+          state.user = [];
+          state.loggedIn = false;
+      },
   },
   actions: {
     async signInAction({ commit }, form) {
-      try {
-        const { error, user } = await supabase.auth.signIn({
-          email: form.email,
-          password: form.password,
-        });
-        if (error) throw error;
-        await router.push('/')
-        createToast('You have Signed In successfully',
-        {
-          showIcon: 'true',
-              transition: 'bounce',
-            type: 'success',
-        })
-        commit('setUser', user.email)
-      } catch (error) {
-        createToast('Invalid Credentials',
-            {
-              showIcon: 'true',
-              transition: 'bounce',
-              type: 'danger',
-            })
-      }
+        try {
+            const { user, error } = await supabase.auth.signIn({
+                email: form.email,
+                password: form.password,
+            });
+            if (!error || user) {
+                await router.push("/");
+                commit("SET_USER", user);
+                createToast("Login Successfully Done", {
+                    hideProgressBar: "true",
+                    showIcon: "true",
+                    position: "top-right",
+                    transition: "slide",
+                    type: "success",
+                });
+            }
+            if (error) {
+                createToast(error.message, {
+                    hideProgressBar: "true",
+                    showIcon: "true",
+                    position: "top-right",
+                    transition: "slide",
+                    type: "danger",
+                });
+                console.log(error);
+            }
+            console.log("user", user);
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     async signUpAction({dispatch}, form) {
@@ -62,26 +74,26 @@ export default createStore({
     },
 
     async signOutAction({ commit }) {
-      try {
-        const { error } = await supabase.auth.signOut();
-
-        createToast('You have Signed Out successfully',
-            {
-              showIcon: 'true',
-              transition: 'bounce',
-              type: 'danger',
-            })
-        if (error) throw error;
-        commit('setUser', null)
-        await router.push("/sign-in");
-      } catch (error) {
-        createToast('Error',
-            {
-              showIcon: 'true',
-              transition: 'bounce',
-              type: 'danger',
-            })
-      }
+        const { user, error } = await supabase.auth.signOut();
+        commit("RESET_USER", user);
+        await router.push("/");
+        createToast("Logout Successfully Done", {
+            hideProgressBar: "true",
+            showIcon: "true",
+            position: "top-right",
+            transition: "slide",
+            type: "success",
+        });
+        if (error) {
+            createToast(error.message, {
+                hideProgressBar: "true",
+                showIcon: "true",
+                position: "top-right",
+                transition: "slide",
+                type: "success",
+            });
+            console.log(error);
+        }
     },
   },
   modules: {

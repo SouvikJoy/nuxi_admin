@@ -100,7 +100,7 @@ export default {
             transition: 'bounce',
             type: 'danger',
           })
-      await router.go();
+      await router.go()
     };
 
 

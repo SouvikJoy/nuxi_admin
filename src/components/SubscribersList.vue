@@ -72,13 +72,12 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import dataService from "@/dataService";
 import {createToast} from "mosha-vue-toastify";
+import router from "@/router";
 export default {
   name: "SubscribersList",
   setup() {
-    const router = useRouter();
     const { displayError, subscribersList, removeSubscribersEmail } =
       dataService();
 
@@ -90,7 +89,7 @@ export default {
             transition: 'bounce',
             type: 'danger',
           })
-      await router.go();
+      await router.go()
     };
 
 

@@ -100,14 +100,13 @@ export default {
 
     const deleteProduct = async (product) => {
       await removeProduct(product);
-
       createToast('Product Deleted',
           {
             showIcon: 'true',
             transition: 'bounce',
             type: 'danger',
           })
-      await router.go();
+      await router.go()
     };
 
     return {
